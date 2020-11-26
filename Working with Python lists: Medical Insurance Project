@@ -1,0 +1,48 @@
+names = ["Mohamed", "Sara", "Xia", "Paul", "Valentina", "Jide", "Aaron", "Emily", "Nikita", "Paul"]
+insurance_costs = [13262.0, 4816.0, 6839.0, 5054.0, 14724.0, 5360.0, 7640.0, 6072.0, 2750.0, 12064.0]
+
+# Add your code here
+names.append("Priscilla")
+insurance_costs.append(8320.0)
+
+medical_records = list(zip(insurance_costs, names))
+print(medical_records)
+
+num_medical_records = len(medical_records)
+print("There are " + str(num_medical_records) + " medical records.")
+
+first_medical_record = medical_records[0]
+print("Here is the first medical record: " + str(first_medical_record))
+
+medical_records.sort()
+print("Here are the medical records sorted by insurance cost: " + str(medical_records))
+
+cheapest_three = medical_records[:3]
+print("Here are the three cheapest insurance cossts in our medical records: " + str(cheapest_three))
+
+priciest_three = medical_records[-3:]
+print("Her are the three most expensive insurance costs in our medical records: " + str(priciest_three))
+
+occurrences_paul = names.count("Paul")
+print("There are " + str(occurrences_paul) + " individuals with the name Paul in our medical records.")
+
+sorted_records = list(zip(names, insurance_costs))
+sorted_records.sort()
+print(sorted_records)
+
+middle_five_records = medical_records[3:8]
+print(middle_five_records)
+
+
+"""
+Output: 
+
+[(13262.0, 'Mohamed'), (4816.0, 'Sara'), (6839.0, 'Xia'), (5054.0, 'Paul'), (14724.0, 'Valentina'), (5360.0, 'Jide'), (7640.0, 'Aaron'), (6072.0, 'Emily'), (2750.0, 'Nikita'), (12064.0, 'Paul'), (8320.0, 'Priscilla')]
+There are 11 medical records.
+Here is the first medical record: (13262.0, 'Mohamed')
+Here are the medical records sorted by insurance cost: [(2750.0, 'Nikita'), (4816.0, 'Sara'), (5054.0, 'Paul'), (5360.0, 'Jide'), (6072.0, 'Emily'), (6839.0, 'Xia'), (7640.0, 'Aaron'), (8320.0, 'Priscilla'), (12064.0, 'Paul'), (13262.0, 'Mohamed'), (14724.0, 'Valentina')]
+Here are the three cheapest insurance cossts in our medical records: [(2750.0, 'Nikita'), (4816.0, 'Sara'), (5054.0, 'Paul')]
+Her are the three most expensive insurance costs in our medical records: [(12064.0, 'Paul'), (13262.0, 'Mohamed'), (14724.0, 'Valentina')]
+There are 2 individuals with the name Paul in our medical records.
+[('Aaron', 7640.0), ('Emily', 6072.0), ('Jide', 5360.0), ('Mohamed', 13262.0), ('Nikita', 2750.0), ('Paul', 5054.0), ('Paul', 12064.0), ('Priscilla', 8320.0), ('Sara', 4816.0), ('Valentina', 14724.0), ('Xia', 6839.0)]
+[(5360.0, 'Jide'), (6072.0, 'Emily'), (6839.0, 'Xia'), (7640.0, 'Aaron'), (8320.0, 'Priscilla')]
