@@ -1,4 +1,5 @@
 """ 
+1
 Write a function named append_sum that has one parameter — a list named named lst.
 
 The function should add the last two elements of lst together and append the result to lst. It should do this process three times and then return lst.
@@ -16,3 +17,23 @@ def append_sum(lst):
 print(append_sum([1, 1, 2]))
 
 # Output: [1, 1, 2, 3, 5, 8]
+
+
+"""
+2
+Write a function named larger_list that has two parameters named lst1 and lst2.
+
+The function should return the last element of the list that contains more elements. If both lists are the same size, then return the last element of lst1.
+"""
+
+#Write your function here
+def larger_list(lst1, lst2):
+  if len(lst2) > len(lst1):
+    return lst2[-1]
+  else:
+    return lst1[-1]
+
+#Uncomment the line below when your function is done
+print(larger_list([4, 10, 2, 5], [-10, 2, 5, 10]))
+
+# Ouput: 5
