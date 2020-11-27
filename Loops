@@ -1,0 +1,74 @@
+"""
+2
+You are adding students to a Poetry class, the size of which is capped at 6. While the length of the students_in_poetry list is less than 6, use .pop() to take a student off the all_students list and add it to the students_in_poetry list.
+"""
+
+all_students = ["Alex", "Briana", "Cheri", "Daniele", "Dora", "Minerva", "Alexa", "Obie", "Arius", "Loki"]
+students_in_poetry = []
+
+while len(students_in_poetry) < 6:
+  new_students = all_students.pop()
+  students_in_poetry.append(new_students)
+print(students_in_poetry)
+
+# Output: ['Loki', 'Arius', 'Obie', 'Alexa', 'Minerva', 'Dora']
+
+
+"""
+3
+We have provided the list sales_data that shows the numbers of different flavors of ice cream sold at three different locations of the fictional shop, Gilbert and Ilbert’s Scoop Shop. We want to sum up the total number of scoops sold. Start by defining a variable scoops_sold and set it to zero.
+
+Checkpoint 2 Passed
+2.
+Go through the sales_data list. Call each inner list location, and print out each location list.
+
+Checkpoint 3 Passed
+3.
+Within the sales_data loop, go through each location list and add the element to your scoops_sold variable.
+
+By the end, you should have the sum of every number in the sales_data nested list.
+"""
+
+sales_data = [[12, 17, 22], [2, 10, 3], [5, 12, 13]]
+
+scoops_sold = 0
+
+for location in sales_data:
+  print(location)
+  for sale in location:
+    scoops_sold += sale
+print(scoops_sold)
+
+""" Output: [12, 17, 22]
+[2, 10, 3]
+[5, 12, 13]
+96 """
+
+
+
+"""
+4 List Comprehensions
+We have defined a list heights of visitors to a theme park. In order to ride the Topsy Turvy Tumbletron roller coaster, you need to be above 161 centimeters. Using a list comprehension, create a new list called can_ride_coaster that has every element from heights that is greater than 161.
+"""
+
+heights = [161, 164, 156, 144, 158, 170, 163, 163, 157]
+can_ride_coaster = [height for height in heights if height > 161]
+print(can_ride_coaster)
+
+# Output: [164, 170, 163, 163]
+
+"""
+5
+We have provided a list of temperatures in celsius. Using a list comprehension, create a new list called fahrenheit that converts each element in the celsius list to fahrenheit.
+
+*Note: * To convert, use the formula:
+
+temperature_in_fahrenheit = temperature_in_celsius * 9/5 + 32
+"""
+
+celsius = [0, 10, 15, 32, -5, 27, 3]
+fahrenheit = [temp * 9/5 + 32 for temp in celsius]
+print(fahrenheit)
+
+# Output: [32.0, 50.0, 59.0, 89.6, 23.0, 80.6, 37.4]
+
