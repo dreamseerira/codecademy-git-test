@@ -1,0 +1,172 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as pyplot
+import codecademylib3_seaborn
+import glob
+
+files = glob.glob('states*.csv')
+
+df_list = []
+for filename in files:
+  data = pd.read_csv(filename)
+  df_list.append(data)
+
+census = pd.concat(df_list)
+
+#print(census.head())
+#print(census.columns)
+#print(census.dtypes)
+
+# Use regex to turn the Income column into a format that is ready for conversion into a numerical type.
+census['Income'] = census['Income'].replace('[\$,]', '', regex=True)
+census['Income'] = pd.to_numeric(census['Income'])
+# print(census['Income'])
+#print(census.dtypes)
+
+# 6. Look at the GenderPop column. We are going to want to separate this into two columns, the Men column, and the Women column.
+
+# Split the column into those two new columns using str.split and separating out those results.
+gender_pop_split = census['GenderPop'].str.split('_')
+census['Men'] = gender_pop_split.str.get(0)
+census['Women'] = gender_pop_split.str.get(1)
+
+#print(census.head())
+
+# 7. Convert both of the columns into numerical datatypes.
+
+# There is still an M or an F character in each entry! We should remove those before we convert.
+census['Men'] = census['Men'].replace('(M)', '', regex=True)
+census['Women'] = census['Women'].replace('(F)', '', regex=True)
+
+#print(census.head())
+
+census['Men'] = pd.to_numeric(census['Men'])
+census['Women'] = pd.to_numeric(census['Women'])
+
+#print(census.head())
+#print(census.dtypes)
+
+census = census[['State', 'TotalPop', 'Hispanic', 'White', 'Black', 'Native', 'Asian', 'Pacific', 'Income', 'Men', 'Women']]
+
+print(census.head())
+
+# 8. Now you should have the columns you need to make the graph and make sure your boss does not slam a ruler angrily on your desk because you’ve wasted your whole day cleaning your data with no results to show!
+
+# Use matplotlib to make a scatterplot!
+pyplot.scatter(census['Women'], census['Income'])
+pyplot.show()
+
+# 9. Did you get an error? These monstrous csv files probably have nan values in them! Print out your column with the number of women per state to see.
+
+# We can fill in those nans by using pandas’ .fillna() function.
+
+# You have the TotalPop per state, and you have the Men per state. As an estimate for the nan values in the Women column, you could use the TotalPop of that state minus the Men for that state.
+
+# Print out the Women column after filling the nan values to see if it worked!
+#print(census['Women'])
+women_nan = census['Women'].isnull()
+#print(women_nan.value_counts())
+
+f_nan_value = census['TotalPop'] - census['Men']
+
+census['Women'] = census['Women'].fillna(value=f_nan_value)
+#print(census['Women'].isnull().value_counts())
+
+# 10. We forgot to check for duplicates! Use .duplicated() on your census DataFrame to see if we have duplicate rows in there.
+duplicates = census.duplicated()
+#print(duplicates.value_counts())
+
+# 11. Drop those duplicates using the .drop_duplicates() function.
+census = census.drop_duplicates()
+duplicates = census.duplicated()
+#print(duplicates.value_counts())
+
+# 12. Make the scatterplot again. Now, it should be perfect! Your job is secure, for now.
+pyplot.scatter(census['Women'], census['Income'])
+pyplot.show()
+
+
+# Histograms of Races
+
+# 13. Now, your boss wants you to make a bunch of histograms out of the race data that you have. Look at the .columns again to see what the race categories are.
+
+print(census.columns)
+
+# 14. Try to make a histogram for each one!
+
+# You will have to get the columns into numerical format, and those percentage signs will have to go.
+
+# Don’t forget to fill the nan values with something that makes sense! You probably dropped the duplicate rows when making your last graph, but it couldn’t hurt to check for duplicates again.
+
+census['Hispanic'] = census['Hispanic'].replace('[\%,]', '', regex=True)
+census['White'] = census['White'].replace('[\%,]', '', regex=True)
+census['Black'] = census['Black'].replace('[\%,]', '', regex=True)
+census['Native'] = census['Native'].replace('[\%,]', '', regex=True)
+census['Asian'] = census['Asian'].replace('[\%,]', '', regex=True)
+census['Pacific'] = census['Pacific'].replace('[\%,]', '', regex=True)
+
+print(census.head())
+
+census['Hispanic'] = pd.to_numeric(census['Hispanic'])
+census['White'] = pd.to_numeric(census['White'])
+census['Black'] = pd.to_numeric(census['Black'])
+census['Native'] = pd.to_numeric(census['Native'])
+census['Asian'] = pd.to_numeric(census['Asian'])
+census['Pacific'] = pd.to_numeric(census['Pacific'])
+
+print(census.dtypes)
+
+h_nan = census['Hispanic'].isnull()
+w_nan = census['White'].isnull()
+b_nan = census['Black'].isnull()
+n_nan = census['Native'].isnull()
+a_nan = census['Asian'].isnull()
+p_nan = census['Pacific'].isnull()
+
+print(h_nan.value_counts())
+print(w_nan.value_counts())
+print(b_nan.value_counts())
+print(n_nan.value_counts())
+print(a_nan.value_counts())
+print(p_nan.value_counts())
+
+p_nan_value = census['Pacific'].mean()
+print(p_nan_value)
+census['Pacific'] = census['Pacific'].fillna(value=p_nan_value)
+new_p_nan = census['Pacific'].isnull()
+print(new_p_nan.value_counts())
+
+pyplot.hist(census['Hispanic'])
+pyplot.xlabel('Percentage Hispanic')
+pyplot.ylabel('Frequency of occurrence')
+pyplot.show()
+
+pyplot.hist(census['White'])
+pyplot.xlabel('Percentage White')
+pyplot.ylabel('Frequency of occurrence')
+pyplot.show()
+
+pyplot.hist(census['Black'])
+pyplot.xlabel('Percentage Black')
+pyplot.ylabel('Frequency of occurrence')
+pyplot.show()
+
+pyplot.hist(census['Native'])
+pyplot.xlabel('Percentage Native')
+pyplot.ylabel('Frequency of occurrence')
+pyplot.show()
+
+pyplot.hist(census['Asian'])
+pyplot.xlabel('Percentage Asian')
+pyplot.ylabel('Frequency of occurrence')
+pyplot.show()
+
+pyplot.hist(census['Pacific'])
+pyplot.xlabel('Percentage Pacific')
+pyplot.ylabel('Frequency of occurrence')
+pyplot.show()
+
+
+
+
+
