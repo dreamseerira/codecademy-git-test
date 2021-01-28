@@ -1,0 +1,79 @@
+SUMMARY STATISTICS
+Describe Exam Grade Distributions
+You are teaching a middle school computer science class, and have taken it upon yourself to understand how your class performed on each exam over the past year.
+
+You can see the distribution for each of four exams in the web browser to the right. In summary.txt, we have written a template for describing each of the four distributions. Replace each blank with a word that best describes the histogram of interest.
+
+Tasks
+4/4 Complete
+Mark the tasks as complete by checking them off
+Exam Score Distributions
+1.
+Exam 1: Use the following information, and the distribution to the right to fill in the Exam 1 blanks in summary.txt.
+
+Average: 80
+
+Median: 80
+
+Check the hint for the answer and an interpretation of the results.
+
+
+Stuck? Get a hint
+2.
+Exam 2: Use the following information, and the distribution to the right to fill in the Exam 2 blanks in summary.txt.
+
+Average: 82
+
+Median: 84
+
+Check the hint for the answer and an interpretation of the results.
+
+
+Stuck? Get a hint
+3.
+Exam 3: Use the following information, and the distribution to the right to fill in the Exam 3 blanks in summary.txt.
+
+Average: 77
+
+Median: 80
+
+Check the hint for the answer and an interpretation of the results.
+
+
+Stuck? Get a hint
+4.
+Final Exam: Use the following information, and the distribution to the right to fill in the Final Exam blanks in summary.txt.
+
+Average: 80
+
+Median: 80
+
+Check the hint for the answer and an interpretation of the results.
+
+On exam 1, the average and median scores were 80 and 80 respectively. The distribution is symmetric with a similar distribution of scores to the left and right of the center.
+
+The range is close to 35 with the lowest grade close to 55 and the largest grade close to 90 There is one student, who scored close to 55 who is considered an outlier.
+
+#####################
+#####################
+
+On exam 2, the average and median scores were 82 and 84 respectively. The distribution has a left skew, which agrees with our finding that the average of our dataset is smaller than the median.
+
+The range is close to 40 with the lowest grade close to 60 and the largest grade close to 100
+
+#####################
+#####################
+
+On exam 3, the average and median scores were 77 and 80 respectively. The distribution is bimodal, and both modes have a similar tail on both sides of their peak, indicating that each is symmetrical.
+
+The range is close to 43 with the lowest grade close to 55 and the largest grade close to 98.
+
+
+#####################
+#####################
+
+
+On the final exam, the average and median scores were 80 and 80 respectively. The distribution is symmetrical with a similar distribution of scores to the left and right of the center.
+
+The range is close to 30 with the lowest grade close to 68 and the largest grade close to 98 There is one student, who scored close to 98 that is considered an outlier.
+
